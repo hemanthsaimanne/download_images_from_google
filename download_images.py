@@ -3,10 +3,10 @@ import urllib.request
 
 # Create a search object
 gis = GoogleImagesSearch('your_dev_api_key', 'your_project_cx') #get the keys from GCP console
-def download_img(keyword,img_count):
+def download_img(keyword,img_count,format):
     # Set the search parameters
     search_params={"q":keyword,'num': img_count,
-        'fileType': 'jpg',}
+        'fileType': format,}
     gis.search(search_params)
 
     # Get the search results
@@ -19,7 +19,7 @@ def download_img(keyword,img_count):
         try:
             url = result.url
             response = urllib.request.urlopen(url)
-            file = open(str(i)+'.jpg', 'wb')
+            file = open(str(i)+'.'+str(format), 'wb')
             file.write(response.read())
             i+=1
             file.close()
@@ -27,4 +27,4 @@ def download_img(keyword,img_count):
         except Exception as e:
             print(e)
 
-download_img('damaged cars',20)
+download_img('damaged cars',20,'jpg')
