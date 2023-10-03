@@ -6,7 +6,7 @@ gis = GoogleImagesSearch('your_dev_api_key', 'your_project_cx') #get the keys fr
 def download_img(keyword,img_count):
     # Set the search parameters
     search_params={"q":keyword,'num': img_count,
-        'fileType': 'jpg|gif|png',}
+        'fileType': 'jpg',}
     gis.search(search_params)
 
     # Get the search results
